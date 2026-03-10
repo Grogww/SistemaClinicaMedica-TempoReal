@@ -1,0 +1,200 @@
+/* public/css/style.css */
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --neutral: #6b7280;
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --text: #1e293b;
+  --text-muted: #64748b;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── Header ──────────────────────────────────────── */
+header {
+  background: var(--primary);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+header h1 { font-size: 1.3rem; font-weight: 700; }
+
+/* Indicador de status WebSocket */
+.ws-status {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .85rem;
+  background: rgba(255,255,255,.15);
+  padding: .35rem .75rem;
+  border-radius: 999px;
+}
+.ws-status .indicador {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #fbbf24; /* amarelo = conectando */
+  animation: piscar 1s infinite;
+}
+.ws-status.conectado .indicador   { background: #4ade80; animation: none; }
+.ws-status.desconectado .indicador { background: #f87171; animation: none; }
+@keyframes piscar { 0%,100% { opacity:1 } 50% { opacity:.3 } }
+
+/* ── Layout principal ─────────────────────────────── */
+main {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+.card h2 { font-size: 1.1rem; margin-bottom: .4rem; }
+.descricao { color: var(--text-muted); font-size: .9rem; margin-bottom: 1.2rem; }
+
+/* ── Formulário de cadastro ───────────────────────── */
+.formulario {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr auto;
+  gap: .75rem;
+  align-items: end;
+}
+.campo { display: flex; flex-direction: column; gap: .3rem; }
+.campo label { font-size: .82rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .04em; }
+.campo input, .campo select {
+  padding: .55rem .75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: .95rem;
+  outline: none;
+  transition: border .2s;
+}
+.campo input:focus, .campo select:focus { border-color: var(--primary); }
+
+button#btn-cadastrar {
+  padding: .55rem 1.2rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s;
+  white-space: nowrap;
+}
+button#btn-cadastrar:hover { background: var(--primary-dark); }
+button#btn-cadastrar:disabled { background: var(--neutral); cursor: not-allowed; }
+
+/* ── Mensagem de feedback ─────────────────────────── */
+.mensagem { padding: .6rem 1rem; border-radius: 8px; font-size: .9rem; margin-top: 1rem; }
+.mensagem.sucesso { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+.mensagem.erro    { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+.oculto { display: none; }
+
+/* ── Quadro: cabeçalho com filtros ───────────────── */
+.cabecalho-quadro { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: .5rem; }
+.filtros { display: flex; gap: .5rem; }
+.filtros select {
+  padding: .4rem .7rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: .85rem;
+  outline: none;
+}
+
+/* ── Contadores ──────────────────────────────────── */
+.contadores {
+  display: flex; gap: .75rem; flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.contador-item {
+  padding: .4rem 1rem;
+  border-radius: 999px;
+  font-size: .82rem;
+  font-weight: 700;
+  border: 2px solid transparent;
+}
+.contador-espera     { background: #fef9c3; color: #92400e; border-color: #fde68a; }
+.contador-atendimento{ background: #dbeafe; color: #1e40af; border-color: #bfdbfe; }
+.contador-atendido   { background: #dcfce7; color: #15803d; border-color: #bbf7d0; }
+.contador-cancelado  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+
+/* ── Tabela ──────────────────────────────────────── */
+.tabela-wrapper { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+th {
+  background: var(--bg);
+  text-align: left;
+  padding: .65rem 1rem;
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--border);
+}
+td { padding: .7rem 1rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #f8fafc; }
+.vazio { text-align: center; color: var(--text-muted); padding: 2rem; }
+
+/* ── Badges de status ─────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: .25rem .7rem;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.badge-espera      { background: #fef9c3; color: #92400e; }
+.badge-atendimento { background: #dbeafe; color: #1e40af; }
+.badge-atendido    { background: #dcfce7; color: #15803d; }
+.badge-cancelado   { background: #fee2e2; color: #991b1b; }
+
+/* ── Botões de ação na tabela ─────────────────────── */
+.acoes { display: flex; gap: .4rem; flex-wrap: wrap; }
+.btn-acao {
+  padding: .3rem .65rem;
+  border-radius: 6px;
+  font-size: .78rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: opacity .15s;
+}
+.btn-acao:hover { opacity: .8; }
+.btn-chamar    { background: #dbeafe; color: #1e40af; border-color: #bfdbfe; }
+.btn-concluir  { background: #dcfce7; color: #15803d; border-color: #bbf7d0; }
+.btn-cancelar  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+.btn-remover   { background: #f1f5f9; color: var(--text-muted); border-color: var(--border); }
+
+/* ── Responsividade ───────────────────────────────── */
+@media (max-width: 700px) {
+  .formulario { grid-template-columns: 1fr 1fr; }
+  button#btn-cadastrar { grid-column: span 2; }
+  .cabecalho-quadro { flex-direction: column; align-items: flex-start; }
+}

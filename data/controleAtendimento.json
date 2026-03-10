@@ -1,0 +1,35 @@
+{
+  "pacientes": [
+    {
+      "id": "b7c76937-0c58-4270-9d65-30c47324c95b",
+      "nome": "Adalberto Mansoni",
+      "idade": 53,
+      "area": "Clínica Geral",
+      "status": "Atendido",
+      "horarioCadastro": "2026-03-06T11:33:48.371Z",
+      "horarioAtendimento": "2026-03-06T11:35:03.864Z",
+      "horarioFim": "2026-03-06T11:35:57.924Z"
+    },
+    {
+      "id": "6975cdb9-a534-4aae-a91f-bccffe424ae9",
+      "nome": "Testando da Silva",
+      "idade": 23,
+      "area": "Ortopedia",
+      "status": "Cancelado",
+      "horarioCadastro": "2026-03-06T11:34:52.733Z",
+      "horarioAtendimento": "2026-03-06T11:36:02.424Z",
+      "horarioFim": "2026-03-06T11:36:04.117Z"
+    },
+    {
+      "id": "c68949f0-8d03-4899-8526-d839a1eb48e0",
+      "nome": "Novo Teste",
+      "idade": 82,
+      "area": "Cardiologia",
+      "status": "Em Espera",
+      "horarioCadastro": "2026-03-10T11:18:29.396Z",
+      "horarioAtendimento": null,
+      "horarioFim": null
+    }
+  ],
+  "ultimaAtualizacao": "2026-03-10T11:18:29.396Z"
+}
