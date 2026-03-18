@@ -20,7 +20,7 @@ function inicializar(server) {
     const ip = req.socket.remoteAddress;
 
     clientes.add(ws);
-    console.log(`[WS] ✅ Cliente #${idConexao} conectado | IP: ${ip} | Total: ${clientes.size}`);
+    console.log(`[WS] Cliente #${idConexao} conectado | IP: ${ip} | Total: ${clientes.size}`);
 
     // QUando um cliente conecta envia mensagem de boas vindas
     // Permite o client reagir a esse evento ou avisar sobre a conexão estabalecida
